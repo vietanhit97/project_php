@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('',[HomeController::class,'home']); // khai báo router 
+Route::get('gioi-thieu',[HomeController::class,'about']); // gioi thieu là người dùng nhập trên URL
+Route::get('lien-he',[HomeController::class,'adress']); // gioi thieu là người dùng nhập trên URL
