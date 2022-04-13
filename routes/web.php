@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
 |
 */
 
-Route::get('',[HomeController::class,'home']); // khai báo router 
+Route::get('',[HomeController::class,'home'])->name('home'); // khai báo router 
 Route::get('gioi-thieu',[HomeController::class,'about']); // gioi thieu là người dùng nhập trên URL
 Route::get('lien-he',[HomeController::class,'adress']); // gioi thieu là người dùng nhập trên URL
+Route::get('san-pham',[HomeController::class,'product']);

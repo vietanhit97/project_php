@@ -19,15 +19,23 @@
                     <tr>
                         <th>id</th>
                         <th>name</th>
+                        <th>price</th>
+                        <th>sale_price</th>
+                        <th>image</th>
+                        <th>category_id</th>
                         <th>status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($cats as $cat)
+                @foreach($pros as $pro)
                     <tr>
-                        <td>{{$cat -> id}}</td>
-                        <td>{{$cat -> name}}</td>
-                        <td>{{$cat -> status==1 ? 'Hiển thị' : 'Ẩn'}}</td>
+                        <td>{{$pro -> id}}</td>
+                        <td>{{$pro -> name}}</td>
+                        <td>{{$pro -> price}}</td>
+                        <td>{{$pro -> sale_price}}</td>
+                        <td>{{$pro -> image}}</td>
+                        <td>{{$pro -> category_id}}</td>
+                        <td>{{$pro -> status}}</td>
                     </tr>
                     @endforeach
                 </tbody>
