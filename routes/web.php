@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
 /*
@@ -14,6 +13,6 @@ use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
 */
 
 Route::get('',[HomeController::class,'home'])->name('home'); // khai báo router 
-Route::get('gioi-thieu',[HomeController::class,'about']); // gioi thieu là người dùng nhập trên URL
-Route::get('lien-he',[HomeController::class,'adress']); // gioi thieu là người dùng nhập trên URL
-Route::get('san-pham',[HomeController::class,'product']);
+Route::get('about',[HomeController::class,'about'])->name('about'); // gioi thieu là người dùng nhập trên URL
+Route::get('address',[HomeController::class,'address'])->name('address'); // gioi thieu là người dùng nhập trên URL
+Route::get('product',[HomeController::class,'product'])->name('product');// ->name('product') goi ra link veiw master

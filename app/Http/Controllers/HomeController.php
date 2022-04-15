@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function about(){
         return view('about');
     }
-    public function adress(){
-        return view('adress');
+    public function address(){
+        return view('address');
     }
 }
