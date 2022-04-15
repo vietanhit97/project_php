@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
+use App\Http\Controllers\AdminController;//lấy bên namespace HomeController
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,6 @@ Route::get('',[HomeController::class,'home'])->name('home'); // khai báo router
 Route::get('about',[HomeController::class,'about'])->name('about'); // gioi thieu là người dùng nhập trên URL
 Route::get('address',[HomeController::class,'address'])->name('address'); // gioi thieu là người dùng nhập trên URL
 Route::get('product',[HomeController::class,'product'])->name('product');// ->name('product') goi ra link veiw master
+Route::group(['prefix'=>'admin'], function(){
+    Route::get('',[AdminController::class,'admin'])->name('admin');
+});
