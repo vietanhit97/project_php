@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
 use App\Http\Controllers\AdminController;//lấy bên namespace HomeController
-
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +20,9 @@ Route::get('address',[HomeController::class,'address'])->name('address'); // gio
 Route::get('product',[HomeController::class,'product'])->name('product');// ->name('product') goi ra link veiw master
 Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mảng và function
     Route::get('',[AdminController::class,'dashboard'])->name('admin');
+    Route::group(['prefix'=>'category'], function(){
+        Route::get('',[CategoryController::class,'index'])->name('category.index');
+        Route::get('creat',[CategoryController::class,'creat'])->name('admin.category.creat');
+        Route::post('store',[CategoryController::class,'store'])->name('admin.category.store');
+    });
 });
