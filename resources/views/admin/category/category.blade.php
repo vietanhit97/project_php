@@ -7,6 +7,7 @@
         <input type="text" name='key' class="form-control" id="" placeholder="Tìm kiếm">
     </div>
     <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
+    <a href="{{route('admin.category.creat')}}" class = "btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>Thêm Mới</a>
 </form>
 <table class="table table-hover mt-5">
     <thead>
@@ -20,12 +21,16 @@
     <tbody>
         @foreach($cats as $cat)
         <tr> 
-            <td>1</td>
+            <td>{{$cat -> id}}</td>
             <td>{{$cat -> name}}</td>
             <td>{{$cat -> status==1 ? 'hiển thị ' : ' ẩn '}}</td>
             <td>
-            <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-            <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+           
+           <form action="{{route('admin.category.delete',$cat->id)}}" method="POST" role="form">
+               @csrf @method('DELETE')
+           <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <button href="" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+           </form>   
         </td>
         </tr>
         @endforeach

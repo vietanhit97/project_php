@@ -28,4 +28,9 @@ class CategoryController extends Controller
         Category::create($req->only('name','status')); //post dữ liệu
         return redirect()->route('category.index'); // chuyển hướng link theo name->('category.index') router ở web.php
     }
+    public function delete(Category $category) {
+       $category->delete();
+       return redirect()->route('category.index');
+    }
+
 }

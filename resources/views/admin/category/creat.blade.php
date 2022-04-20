@@ -1,7 +1,7 @@
 @extends('master.admin')
 @section('content')
 <form action="{{route('admin.category.store')}}" method="POST" role="form">
-    <legend>Form title</legend>
+    <legend>Thêm mới Danh Mục</legend>
     @csrf
     <div class="form-group">
         <label for="">name</label>
@@ -22,7 +22,7 @@
             Tạm ẩn
         </label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Thêm Mới</button>
 </form>
 
 @stop()

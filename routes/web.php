@@ -23,6 +23,7 @@ Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mả
     Route::group(['prefix'=>'category'], function(){
         Route::get('',[CategoryController::class,'index'])->name('category.index');
         Route::get('creat',[CategoryController::class,'creat'])->name('admin.category.creat');
+        Route::delete('delete/{category}',[CategoryController::class,'delete'])->name('admin.category.delete');
         Route::post('store',[CategoryController::class,'store'])->name('admin.category.store');
     });
 });
