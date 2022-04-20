@@ -32,5 +32,19 @@ class CategoryController extends Controller
        $category->delete();
        return redirect()->route('category.index');
     }
-
+    public function edit(Category $category){
+       
+        return view('admin.category.edit',compact('category'));
+    }
+    public function update(Request $req,Category $category)
+    {
+        $req->validate([
+            'name' => 'required|unique:category,name,'. $category->id // unique:category,name,'. $category->id cho phep không sửa tên theo id
+        ],[
+            'name.required' => 'Tên không được để trống ',
+            'name.unique' => 'Tên danh mục đã tồn tại'
+        ]);
+        $category->update($req->only('name','status')); //post dữ liệu
+        return redirect()->route('category.index'); // chuyển hướng link theo name->('category.index') router ở web.php
+    }
 }

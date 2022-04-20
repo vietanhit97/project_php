@@ -28,8 +28,8 @@
            
            <form action="{{route('admin.category.delete',$cat->id)}}" method="POST" role="form">
                @csrf @method('DELETE')
-           <a href="" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-            <button href="" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            <a href="{{route('admin.category.edit',$cat->id)}}" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <button class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
            </form>   
         </td>
         </tr>
