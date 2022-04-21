@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
 use App\Http\Controllers\AdminController;//lấy bên namespace HomeController
+use App\Http\Controllers\UserController;//lấy bên namespace HomeController
 use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,8 @@ Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mả
         Route::get('edit/{category}',[CategoryController::class,'edit'])->name('admin.category.edit');
         Route::put('update/{category}',[CategoryController::class,'update'])->name('admin.category.update');
     });
+});
+Route::group(['prefix'=>'user'], function(){ //group truyền 2 tham sô : mảng và function
+    Route::get('',[UserController::class,'home'])->name('user');
+   
 });

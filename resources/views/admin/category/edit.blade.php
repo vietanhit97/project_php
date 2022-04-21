@@ -24,5 +24,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Thêm Mới</button>
 </form>
-
 @stop()
