@@ -285,6 +285,8 @@
 <script src="{{url('public/admincss')}}/js/dashboard.js"></script>
 <!-- <script src="tinymce/tinymce.min.js"></script>
 <script src="tinymce/config.js"></script> -->
+<script src="{{url('public/admincss')}}/tinymce/tinymce.min.js"></script>
+<script src="{{url('public/admincss')}}/tinymce/config.js"></script>
 <script src="{{url('public/admincss')}}/js/function.js"></script>
 </body>
 </html>

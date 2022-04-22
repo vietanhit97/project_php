@@ -41,5 +41,4 @@ Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mả
 });
 Route::group(['prefix'=>'user'], function(){ //group truyền 2 tham sô : mảng và function
     Route::get('',[UserController::class,'home'])->name('user');
-   
 });

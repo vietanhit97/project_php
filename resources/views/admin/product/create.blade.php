@@ -45,7 +45,7 @@
     </div>
     <div class="form-group">
         <label for="">Mô tả</label>
-        <input type="text" class="form-control" name="description" id="" placeholder="Mô tả sản phẩm ">
+        <textarea name="description" id="content" class="form-control" rows="3" placeholder="Mô tả sản phẩm..."></textarea>
     </div>
     <div class="form-group">
         <label for="">Trạng Thái</label>

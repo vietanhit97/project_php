@@ -30,7 +30,7 @@ tinymce.init({
     force_p_newlines : false,
     forced_root_block : '',
     filemanager_title:"Quản lý ảnh",	
-    external_filemanager_path: base_url()+"/file/",
+    // external_filemanager_path: base_url()+"/file/",   tắt từ dòng 33 -> 38 để hết lỗi 
     // external_plugins: { 
     //     "filemanager" : base_url()+"/file/plugin.min.js",
     //     codemirror: base_url()+'/public/backend/tinymce/plugins/codemirror/plugin.js'
@@ -81,9 +81,9 @@ tinymce.init({
     relative_urls: false,
     remove_script_host : false,
 		filemanager_title:"Quản lý ảnh",	
-	external_filemanager_path: base_url()+"/file/",
-	external_plugins: { "filemanager" : base_url()+"/file/plugin.min.js"},
-	filemanager_access_key:akey(),
+	// external_filemanager_path: base_url()+"/file/", tắt từ dòng 84 -> 86 để hết lỗi 
+	// external_plugins: { "filemanager" : base_url()+"/file/plugin.min.js"},
+	// filemanager_access_key:akey(),
 
 });
 var thumb = $(".thumb");
