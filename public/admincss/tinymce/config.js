@@ -31,11 +31,11 @@ tinymce.init({
     forced_root_block : '',
     filemanager_title:"Quản lý ảnh",	
     external_filemanager_path: base_url()+"/file/",
-    external_plugins: { 
-        "filemanager" : base_url()+"/file/plugin.min.js",
-        codemirror: base_url()+'/public/backend/tinymce/plugins/codemirror/plugin.js'
-    },
-    filemanager_access_key:akey(),
+    // external_plugins: { 
+    //     "filemanager" : base_url()+"/file/plugin.min.js",
+    //     codemirror: base_url()+'/public/backend/tinymce/plugins/codemirror/plugin.js'
+    // },
+    // filemanager_access_key:akey(),
     codemirror: {
         indentOnInit: true,
         path: 'codemirror-4.8',

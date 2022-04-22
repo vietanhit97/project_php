@@ -130,7 +130,8 @@ CREATE TABLE `product` (
   `category_id` int(11) NOT NULL,
   `status` tinyint(4) DEFAULT 0,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

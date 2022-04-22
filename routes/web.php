@@ -4,6 +4,8 @@ use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
 use App\Http\Controllers\AdminController;//lấy bên namespace HomeController
 use App\Http\Controllers\UserController;//lấy bên namespace HomeController
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,14 @@ Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mả
         Route::delete('delete/{category}',[CategoryController::class,'delete'])->name('admin.category.delete');
         Route::get('edit/{category}',[CategoryController::class,'edit'])->name('admin.category.edit');
         Route::put('update/{category}',[CategoryController::class,'update'])->name('admin.category.update');
+    });
+    Route::group(['prefix'=>'product'], function(){
+        Route::get('',[ProductController::class,'index'])->name('product.index');
+        Route::get('create',[ProductController::class,'create'])->name('admin.product.create');
+        Route::post('store',[ProductController::class,'store'])->name('admin.product.store');
+        Route::delete('delete/{product}',[ProductController::class,'delete'])->name('admin.product.delete');
+        Route::get('edit/{product}',[ProductController::class,'edit'])->name('admin.product.edit');
+        Route::put('update/{product}',[ProductController::class,'update'])->name('admin.product.update');
     });
 });
 Route::group(['prefix'=>'user'], function(){ //group truyền 2 tham sô : mảng và function
