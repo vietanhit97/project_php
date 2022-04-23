@@ -125,34 +125,12 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <img src="" class="user-image" alt="">
+              <span class="hidden-xs">Việt Anh</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
-                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
               <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
@@ -209,6 +187,15 @@
           <ul class="treeview-menu">
             <li><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i>Chi tiết danh mục</a></li>
           </ul>
+          <a href="#">
+            <i class="fa fa-product-hunt"></i> <span>Sản Phẩm</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('product.index')}}"><i class="fa fa-circle-o"></i>Chi Tiết Sản Phẩm</a></li>
+          </ul>
         </li>
         
       </ul>
@@ -223,14 +210,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
-        <small>it all starts here</small>
+        ADMIN
+        <small>Quản Lý</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol>
+      
     </section>
 
     <!-- Main content -->
@@ -254,7 +237,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
+         
         </div>
         <!-- /.box-footer-->
       </div>
@@ -264,15 +247,12 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">VietAnh Studio</a>.</strong> 
   </footer>
-
 </div>
 <!-- ./wrapper -->
 

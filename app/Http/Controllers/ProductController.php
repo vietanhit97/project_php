@@ -8,7 +8,10 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(){
-        return view('admin.product.product');
+
+        $pros = Product::join('category', 'category.id','=','category_id')
+                            ->get(['product.*','category.name as namecat']);
+        return view('admin.product.product',compact('pros'));
     }
     public function create(){
         $cats = Category::all();
@@ -38,6 +41,6 @@ class ProductController extends Controller
         $data=$req->only('name','price','sale_price','category_id','description','image');
         $data['image'] = $file_name; // phải để dưới $req->only('name','price','sale_price','category_id','description','image');
         Product::create($data); // thêm sản phẩm
-        dd($data);
+        return redirect()->route('product.index');
     }
 }
