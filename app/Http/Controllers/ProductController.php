@@ -8,7 +8,6 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(){
-
         $pros = Product::join('category', 'category.id','=','category_id')
                             ->get(['product.*','category.name as namecat']);
         return view('admin.product.product',compact('pros'));
@@ -42,5 +41,9 @@ class ProductController extends Controller
         $data['image'] = $file_name; // phải để dưới $req->only('name','price','sale_price','category_id','description','image');
         Product::create($data); // thêm sản phẩm
         return redirect()->route('product.index');
+    }
+    public function delete(Product $product){
+        $product->delete();
+         return redirect()->route('product.index');
     }
 }

@@ -20,6 +20,7 @@
             <th>Giá Khuyến mãi</th>
             <th>Ảnh</th>
             <th>Trạng Thái</th>
+            <th>Mô Tả</th>
             <th>Tùy chọn</th>
         </tr>
     </thead>
@@ -33,6 +34,7 @@
             <td>{{$pro -> sale_price}}</td>
             <td><img src="{{url('public/uploads')}}/{{$pro -> image}}" alt="" width="60px"></td>
             <td>{{$pro -> status==1 ? 'Hiển Thị ' : ' Ẩn '}}</td>
+            <td>{{$pro -> description}}</td>
             <td>
 
             <form action="{{route('admin.product.delete',$pro->id)}}" method="POST" role="form">
