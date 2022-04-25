@@ -232,6 +232,18 @@
               <i class="fa fa-times"></i></button>
           </div>
         </div>
+        @if(Session::has('ok'))
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{Session::get('ok')}}
+        </div>
+        @endif
+        @if(Session::has('no'))  
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          {{Session::get('no')}}
+        </div>
+        @endif
         <div class="box-body">
           @yield('content')
         </div>

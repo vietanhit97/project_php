@@ -36,7 +36,6 @@
             <td>{{$pro -> status==1 ? 'Hiển Thị ' : ' Ẩn '}}</td>
             <td>{{$pro -> description}}</td>
             <td>
-
             <form action="{{route('admin.product.delete',$pro->id)}}" method="POST" role="form">
                @csrf @method('DELETE')
             <a href="{{route('admin.product.edit',$pro->id)}}" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
