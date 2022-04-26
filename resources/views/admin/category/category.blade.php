@@ -22,7 +22,7 @@
         @foreach($cats as $cat)
         <tr> 
             <td>{{$cat -> id}}</td>
-            <td>{{$cat -> name}}</td>
+            <td>{{$cat -> name}}({{$cat->products()->count()}})</td>
             <td>{{$cat -> status==1 ? 'hiển thị ' : ' ẩn '}}</td>
             <td>
            

@@ -8,11 +8,7 @@ use App\Http\Requests\Category\CategoryRequestUpdate as ReqUpdate;
 class CategoryController extends Controller
 {
     public function index(Request $req){
-        $cats = Category::paginate(1);
-        if($req->key){ // lay key từ form 
-            $key = $req->key; // gán key tren form 
-            $cats= Category::where('name','like','%'.$key.'%')->paginate(1); //truy vấn
-        }
+        $cats = Category::search()->paginate(4); // search() bên models category.php
         return view('admin.category.category',compact('cats'));
     }
     public function creat(){
@@ -21,26 +17,27 @@ class CategoryController extends Controller
 
     public function store(ReqStore $req)
     {
-        if( Category::create($req->only('name','status'))){ //post dữ liệu
+        if( Category::add()){ //post dữ liệu
             return redirect()->route('category.index')->with('ok','Thêm mới thành công !'); //chuyển hướng 
         }
-        return redirect()->route('category.index')->with('no','Thêm mới không thành công !');
+        return redirect()->route('admin.category.creat')->with('no','Thêm mới thành công !');
          
     }
     public function delete(Category $category) {
-       $category->delete();
-       return redirect()->route('category.index');
+        if($category->products()->count()>0){
+            return redirect()->route('category.index')->with('no','xóa không thành công ! sản phẩm tồn tại trong danh mục ');
+        }
+        $category->delete();
+        return redirect()->route('category.index')->with('ok','xóa thành công !');
     }
 
     public function edit(Category $category){
-       
         return view('admin.category.edit',compact('category'));
     }
 
     public function update(ReqUpdate $req,Category $category)
     {
-      
-        $category->update($req->only('name','status')); //post dữ liệu
-        return redirect()->route('category.index'); // chuyển hướng link theo name->('category.index') 
+        $category->updateCategory(); //post dữ liệu
+        return redirect()->route('category.index')->with('ok','sửa thành công !'); // chuyển hướng link theo name->('category.index') 
     }
 }

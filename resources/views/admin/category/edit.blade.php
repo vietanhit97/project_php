@@ -1,7 +1,7 @@
 @extends('master.admin')
 @section('content')
 <form action="{{route('admin.category.update',$category->id)}}" method="POST" role="form">
-    <legend>Thêm mới Danh Mục</legend>
+    <legend>Sửa Danh Mục</legend>
     @csrf @method('PUT')
     <div class="form-group">
         <label for="">Tên Danh Mục</label>
@@ -22,6 +22,6 @@
             Tạm ẩn
         </label>
     </div>
-    <button type="submit" class="btn btn-primary">Thêm Mới</button>
+    <button type="submit" class="btn btn-success">Sửa </button>
 </form>
 @stop()

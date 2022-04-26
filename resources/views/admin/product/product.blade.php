@@ -28,7 +28,7 @@
         @foreach($pros as $pro)
         <tr>
             <td>{{$pro -> id}}</td>
-            <td>{{$pro -> namecat}}</td>
+            <td>{{$pro -> cat-> name}}</td>
             <td>{{$pro -> name}}</td>
             <td>{{$pro -> price}}</td>
             <td>{{$pro -> sale_price}}</td>
@@ -46,5 +46,5 @@
         @endforeach
     </tbody>
 </table>
-
+{{$pros->appends(request()->all())->links()}}
 @stop

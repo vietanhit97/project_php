@@ -5,45 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Http\Requests\Product\ProductRequestStore as reqPro;
 class ProductController extends Controller
-{
-    public function index(){
-        $pros = Product::join('category', 'category.id','=','category_id')
-                            ->get(['product.*','category.name as namecat']);
+{   
+    public function index(Request $req){
+        $pros = Product::search()->paginate(1);
         return view('admin.product.product',compact('pros'));
     }
     public function create(){
         $cats = Category::all();
         return view('admin.product.create',compact('cats'));
     }
-    public function store(Request $req){ //$req->upload upload lấy name=upload htm
-        
-        $req->validate([
-            'name' => 'required|unique:product',
-            'price'=> 'required',
-            'category_id' => 'required',
-            'upload' => [
-                'required',
-                'mimes:jpeg,jpg,png,gif' // đuôi ảnh 
-            ]
-        ],[
-            'name.required' => 'Tên không được để trống',
-            'name.unique' => 'Tên đã tồn tại',
-            'category_id' => 'Danh muc không được để trống',
-            'price.required' => 'Giá không được để trống',
-            'upload.required' => 'Ảnh không được để trống',
-            'upload.mimes' => 'Định dạng file : jpeg,jpg,png,gif '
-        ]);
-        $ext = $req->upload->extension(); // lấy đuôi ảnh kiểu jpg,
-        $file_name = time() . '.' . $ext; // tên ảnh theo thơi gian time () 
-        $req->upload->move(public_path('uploads'), $file_name); // lưu ảnh vao thư mục 
-        $data=$req->only('name','price','sale_price','category_id','description','image');
-        $data['image'] = $file_name; // phải để dưới $req->only('name','price','sale_price','category_id','description','image');
-        Product::create($data); // thêm sản phẩm
-        return redirect()->route('product.index');
+    public function store(reqPro $req){ 
+        if(Product::add()){
+        return redirect()->route('product.index')->with('ok','thêm mới sản phẩm thành công');
+
+        } 
+        return redirect()->route('product.index')->with('no','thêm mới sản phẩm thành công');
     }
     public function delete(Product $product){
         $product->delete();
-         return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('ok','xóa sản phẩm thành công');
+    }
+    public function edit(Product $product){
+        $cats = Category::all();
+        return view('admin.product.edit',compact('product','cats'));
+    }
+    public function update(reqPro $req,Product $product){
+        $product->updateProduct();
+        return redirect()->route('product.index');
     }
 }
