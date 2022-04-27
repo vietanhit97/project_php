@@ -40,4 +40,8 @@ class CategoryController extends Controller
         $category->updateCategory(); //post dữ liệu
         return redirect()->route('category.index')->with('ok','sửa thành công !'); // chuyển hướng link theo name->('category.index') 
     }
+    public function trashed(){
+        $cats = Category::paginate(4);
+        return view('admin.category.trashed',compact('cats'));
+    }
 }

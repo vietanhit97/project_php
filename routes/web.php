@@ -29,6 +29,10 @@ Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mả
         Route::delete('delete/{category}',[CategoryController::class,'delete'])->name('admin.category.delete');
         Route::get('edit/{category}',[CategoryController::class,'edit'])->name('admin.category.edit');
         Route::put('update/{category}',[CategoryController::class,'update'])->name('admin.category.update');
+        Route::get('trashed',[CategoryController::class,'trashed'])->name('admin.category.trashed');
+        Route::get('restore/{category}',[CategoryController::class,'restore'])->name('admin.category.restore');
+        Route::delete('force-delete/{category}',[CategoryController::class,'restore'])->name('admin.category.forceDelete');
+
     });
     Route::group(['prefix'=>'product'], function(){
         Route::get('',[ProductController::class,'index'])->name('product.index');
