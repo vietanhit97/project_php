@@ -1,6 +1,6 @@
 @extends('master.admin')
 @section('content')
-<form action="{{route('admin.category.update',$category->id)}}" method="POST" role="form">
+<form action="{{route('category.update',$category->id)}}" method="POST" role="form">
     <legend>Sửa Danh Mục</legend>
     @csrf @method('PUT')
     <div class="form-group">

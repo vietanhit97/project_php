@@ -1,6 +1,6 @@
 @extends('master.admin')
 @section('content')
-<form action="{{route('admin.product.update',$product->id)}}" method="POST" role="form" enctype="multipart/form-data">
+<form action="{{route('product.update',$product->id)}}" method="POST" role="form" enctype="multipart/form-data">
     <legend>Sửa sản phẩm</legend>
     @csrf @method('PUT')
     <div class="form-group">

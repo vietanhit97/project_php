@@ -1,6 +1,6 @@
 @extends('master.admin')
 @section('content')
-<form action="{{route('admin.product.store')}}" method="POST" role="form" enctype="multipart/form-data">
+<form action="{{route('product.store')}}" method="POST" role="form" enctype="multipart/form-data">
     <legend>Thêm mới sản phẩm</legend>
     @csrf
     <div class="form-group">

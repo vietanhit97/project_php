@@ -23,7 +23,7 @@ class ProductController extends Controller
         } 
         return redirect()->route('product.index')->with('no','thêm mới sản phẩm thành công');
     }
-    public function delete(Product $product){
+    public function destroy(Product $product){
         $product->delete();
         return redirect()->route('product.index')->with('ok','xóa sản phẩm thành công');
     }

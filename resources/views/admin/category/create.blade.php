@@ -1,6 +1,6 @@
 @extends('master.admin')
 @section('content')
-<form action="{{route('admin.category.store')}}" method="POST" role="form">
+<form action="{{route('category.store')}}" method="POST" role="form">
     <legend>Thêm mới Danh Mục</legend>
     @csrf
     <div class="form-group">

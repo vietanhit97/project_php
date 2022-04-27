@@ -7,7 +7,7 @@
         <input type="text" name='key' class="form-control" id="" placeholder="Tìm kiếm">
     </div>
     <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
-    <a href="{{route('admin.product.create')}}" class="btn btn-success"><i class="fa fa-plus"
+    <a href="{{route('product.create')}}" class="btn btn-success"><i class="fa fa-plus"
             aria-hidden="true"></i>Thêm Mới</a>
 </form>
 <table class="table table-hover mt-5">
@@ -36,9 +36,9 @@
             <td>{{$pro -> status==1 ? 'Hiển Thị ' : ' Ẩn '}}</td>
             <td>{{$pro -> description}}</td>
             <td>
-            <form action="{{route('admin.product.delete',$pro->id)}}" method="POST" role="form">
+            <form action="{{route('product.destroy',$pro->id)}}" method="POST" role="form">
                @csrf @method('DELETE')
-            <a href="{{route('admin.product.edit',$pro->id)}}" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <a href="{{route('product.edit',$pro->id)}}" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
             <button class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
            </form>   
             </td>

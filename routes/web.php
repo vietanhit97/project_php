@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;//lấy bên namespace HomeController
 use App\Http\Controllers\AdminController;//lấy bên namespace HomeController
 use App\Http\Controllers\UserController;//lấy bên namespace HomeController
 use App\Http\Controllers\CategoryController;
@@ -16,31 +15,22 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('',[HomeController::class,'home'])->name('home'); // khai báo router 
-Route::get('about',[HomeController::class,'about'])->name('about'); // gioi thieu là người dùng nhập trên URL
-Route::get('address',[HomeController::class,'address'])->name('address'); // gioi thieu là người dùng nhập trên URL
-Route::get('product',[HomeController::class,'product'])->name('product');// ->name('product') goi ra link veiw master
+ // khai báo router 
 Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mảng và function
     Route::get('',[AdminController::class,'dashboard'])->name('admin');
+    Route::resources([  // cmd : php artisan route:list 
+        'category'=> CategoryController::class,
+        'product'=> ProductController::class
+    ]);
     Route::group(['prefix'=>'category'], function(){
-        Route::get('',[CategoryController::class,'index'])->name('category.index');
-        Route::get('creat',[CategoryController::class,'creat'])->name('admin.category.creat');
-        Route::post('store',[CategoryController::class,'store'])->name('admin.category.store');
-        Route::delete('delete/{category}',[CategoryController::class,'delete'])->name('admin.category.delete');
-        Route::get('edit/{category}',[CategoryController::class,'edit'])->name('admin.category.edit');
-        Route::put('update/{category}',[CategoryController::class,'update'])->name('admin.category.update');
-        Route::get('trashed',[CategoryController::class,'trashed'])->name('admin.category.trashed');
-        Route::get('restore/{category}',[CategoryController::class,'restore'])->name('admin.category.restore');
-        Route::delete('force-delete/{category}',[CategoryController::class,'restore'])->name('admin.category.forceDelete');
-
+        Route::get('trashed',[CategoryController::class,'trashed'])->name('category.trashed');
+        Route::get('restore/{category}',[CategoryController::class,'restore'])->name('category.restore');
+        Route::delete('force-delete/{category}',[CategoryController::class,'restore'])->name('category.forceDelete');
     });
     Route::group(['prefix'=>'product'], function(){
-        Route::get('',[ProductController::class,'index'])->name('product.index');
-        Route::get('create',[ProductController::class,'create'])->name('admin.product.create');
-        Route::post('store',[ProductController::class,'store'])->name('admin.product.store');
-        Route::delete('delete/{product}',[ProductController::class,'delete'])->name('admin.product.delete');
-        Route::get('edit/{product}',[ProductController::class,'edit'])->name('admin.product.edit');
-        Route::put('update/{product}',[ProductController::class,'update'])->name('admin.product.update');
+        Route::get('trashed',[CategoryController::class,'trashed'])->name('product.trashed');
+        Route::get('restore/{product}',[CategoryController::class,'restore'])->name('product.restore');
+        Route::delete('force-delete/{product}',[CategoryController::class,'restore'])->name('product.forceDelete');
     });
 });
 Route::group(['prefix'=>'user'], function(){ //group truyền 2 tham sô : mảng và function

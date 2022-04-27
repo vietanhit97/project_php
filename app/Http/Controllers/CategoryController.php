@@ -11,8 +11,8 @@ class CategoryController extends Controller
         $cats = Category::search()->paginate(4); // search() bên models category.php
         return view('admin.category.category',compact('cats'));
     }
-    public function creat(){
-        return view('admin.category.creat');
+    public function create(){
+        return view('admin.category.create');
     }
 
     public function store(ReqStore $req)
@@ -23,7 +23,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.category.creat')->with('no','Thêm mới thành công !');
          
     }
-    public function delete(Category $category) {
+    public function destroy(Category $category) {
         if($category->products()->count()>0){
             return redirect()->route('category.index')->with('no','xóa không thành công ! sản phẩm tồn tại trong danh mục ');
         }
