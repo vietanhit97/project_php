@@ -16,7 +16,10 @@ use App\Http\Controllers\ProductController;
 |
 */
  // khai báo router 
-Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mảng và function
+ Route::get('admin/login',[AdminController::class,'login'])->name('admin.login'); // hiển thị
+ Route::post('admin/login',[AdminController::class,'check_login']); // gửi dữ liệu form check
+ Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout'); // thoát
+ Route::group(['prefix'=>'admin','middleware' => 'auth'], function(){ //group truyền 2 tham sô : mảng và function ,'middleware' => 'auth' đăng nhâoj
     Route::get('',[AdminController::class,'dashboard'])->name('admin');
     Route::resources([  // cmd : php artisan route:list 
         'category'=> CategoryController::class,

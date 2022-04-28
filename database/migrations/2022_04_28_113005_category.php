@@ -17,7 +17,7 @@ class Category extends Migration
             $table->increments('id');//tương đương tự động tăng dần làm khóa chính:
             $table->string('name',150)->unique();
             $table->tinyInteger('status')->default(0);
-            $table->timestamp('deleted_at')->nullable();
+            $table->timestamp('deleted_at')->nullable(); // được null 
             $table->timestamps(); 
         });
     }

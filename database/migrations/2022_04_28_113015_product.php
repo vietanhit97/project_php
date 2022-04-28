@@ -17,7 +17,7 @@ class Product extends Migration
             $table->increments('id');
             $table->string('name', 200);
             $table->float('price');
-            $table->float('sale_price');
+            $table->float('sale_price')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->integer('category_id')->unsigned();
