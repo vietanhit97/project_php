@@ -20,7 +20,7 @@ Route::group(['prefix'=>'admin'], function(){ //group truyền 2 tham sô : mả
     Route::get('',[AdminController::class,'dashboard'])->name('admin');
     Route::resources([  // cmd : php artisan route:list 
         'category'=> CategoryController::class,
-        'product'=> ProductController::class
+        'product'=> ProductController::class,
     ]);
     Route::group(['prefix'=>'category'], function(){
         Route::get('trashed',[CategoryController::class,'trashed'])->name('category.trashed');
