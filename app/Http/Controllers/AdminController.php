@@ -24,4 +24,10 @@ class AdminController extends Controller
        }
        return redirect()->back()->with('no','Đăng nhập thất bại');
     }
+    public function logout(Request $req){
+        Auth::logout();
+        $req->session()->invalidate();
+        $req->session()->regenerateToken();
+        return redirect()->route('admin.login')->with('ok','Đăng xuất thành công ');
+    }
 }

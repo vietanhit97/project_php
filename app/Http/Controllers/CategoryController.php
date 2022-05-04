@@ -12,7 +12,7 @@ class CategoryController extends Controller
         return view('admin.category.category',compact('cats'));
     }
     public function create(){
-        return view('admin.category.create');
+        return view('admin.category.create'); 
     }
 
     public function store(ReqStore $req)
@@ -41,7 +41,20 @@ class CategoryController extends Controller
         return redirect()->route('category.index')->with('ok','sửa thành công !'); // chuyển hướng link theo name->('category.index') 
     }
     public function trashed(){
-        $cats = Category::paginate(4);
+        $cats = Category::search()->onlyTrashed()->paginate();
         return view('admin.category.trashed',compact('cats'));
     }
+    public function restore($id){
+        $category = Category::withTrashed()->find($id);
+        $category->restore();
+       return redirect()->route('category.index')->with('ok','Khôi phục thành công ');
+    }
+
+    
+    public function forceDelete($id){
+        $category = Category::withTrashed()->find($id);
+        $category->forceDelete();
+        return redirect()->route('category.trashed')->with('ok','Xóa vĩnh viễn thành công ');
+    }
+    // delete tran
 }
