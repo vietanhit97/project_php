@@ -1,4 +1,5 @@
 @extends('master.admin')
+@section('title','Sửa sản phẩm')
 @section('content')
 <form action="{{route('product.update',$product->id)}}" method="POST" role="form" enctype="multipart/form-data">
     <legend>Sửa sản phẩm</legend>

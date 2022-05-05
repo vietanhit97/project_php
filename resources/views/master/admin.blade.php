@@ -7,7 +7,7 @@ $menus = config('menu');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Blank Page</title>
+    <title>@yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -19,6 +19,11 @@ $menus = config('menu');
     <link rel="stylesheet" href="{{url('public/admincss')}}/css/style.css" />
     <script src="{{url('public/admincss')}}/js/angular.min.js"></script>
     <script src="{{url('public/admincss')}}/js/app.js"></script>
+    <script>
+    function base_url() {
+        return "{{url('')}}"; //trả về đường link gốc
+    }
+    </script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -295,6 +300,7 @@ $menus = config('menu');
     <script src="{{url('public/admincss')}}/tinymce/tinymce.min.js"></script>
     <script src="{{url('public/admincss')}}/tinymce/config.js"></script>
     <script src="{{url('public/admincss')}}/js/function.js"></script>
+    @yield('js')
 </body>
 
 </html>

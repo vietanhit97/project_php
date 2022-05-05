@@ -1,4 +1,5 @@
 @extends('master.admin')
+@section('title','Danh sách sản phẩm')
 @section('content')
 
 <form action="{{route('product.index')}}" method="GET" class="form-inline" role="form">

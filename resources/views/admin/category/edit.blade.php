@@ -1,4 +1,5 @@
 @extends('master.admin')
+@section('title','Sửa Danh Mục')
 @section('content')
 <form action="{{route('category.update',$category->id)}}" method="POST" role="form">
     <legend>Sửa Danh Mục</legend>

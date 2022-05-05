@@ -1,4 +1,5 @@
 @extends('master.admin')
+@section('title','Thêm Danh Mục')
 @section('content')
 <form action="{{route('category.store')}}" method="POST" role="form">
     <legend>Thêm mới Danh Mục</legend>

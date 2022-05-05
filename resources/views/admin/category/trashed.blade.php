@@ -1,4 +1,5 @@
 @extends('master.admin')
+@section('title','Thư mục rác Danh Mục')
 @section('content')
 <table class="table table-hover mt-5">
     <thead>
