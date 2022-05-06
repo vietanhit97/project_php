@@ -19,7 +19,6 @@ class ProductController extends Controller
     public function store(reqPro $req){ 
         if(Product::add()){
         return redirect()->route('product.index')->with('ok','thêm mới sản phẩm thành công');
-
         } 
         return redirect()->route('product.index')->with('no','thêm mới sản phẩm thành công');
     }
@@ -34,5 +33,8 @@ class ProductController extends Controller
     public function update(reqPro $req,Product $product){
         $product->updateProduct();
         return redirect()->route('product.index');
+    }
+    public function show(Product $product) {
+        return view('admin.product.show',compact('product'));
     }
 }

@@ -38,14 +38,11 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng Nhập</button>
-                    </div>
-                    <div class="col-xs-4">
-                        <a href="" class="btn btn-success btn-block btn-flat">Đăng Ký</a>
+                        <button type="submit" class="btn btn-primary btn-sm btn-flat">Đăng Nhập</button>
                     </div>
                 </div>
             </form>
-            <a href="#">I forgot my password</a><br>
+            <a href="#" >I forgot my password</a><br>
             <a href="register.html" class="text-center">Register a new membership</a>
         </div>
     </div>

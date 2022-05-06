@@ -34,12 +34,19 @@
             <td>{{$pro -> price}}</td>
             <td>{{$pro -> sale_price}}</td>
             <td><img src="{{url('public/uploads')}}/{{$pro -> image}}" alt="" width="60px"></td>
-            <td>{{$pro -> status==1 ? 'Hiển Thị ' : ' Ẩn '}}</td>
+            <td>
+            @if($pro->status == 0)
+                <span class="label label-danger"> Tạm ẩn</span>
+                @else
+                <span class="label label-success"> Hiển thị</span>
+                @endif
+            </td>
             <td>{{$pro -> description}}</td>
             <td>
             <form action="{{route('product.destroy',$pro->id)}}" method="POST" role="form">
                @csrf @method('DELETE')
             <a href="{{route('product.edit',$pro->id)}}" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <a href="{{route('product.show',$pro->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
             <button class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa không ?')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
            </form>   
             </td>
