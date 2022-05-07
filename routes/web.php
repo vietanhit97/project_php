@@ -39,4 +39,7 @@ use App\Http\Controllers\ProductController;
 });
 Route::group(['prefix'=>'user'], function(){ //group truyền 2 tham sô : mảng và function
     Route::get('',[UserController::class,'home'])->name('user');
+    Route::get('shop',[UserController::class,'shop'])->name('user.shop');
+    Route::get('phone',[UserController::class,'phone'])->name('user.phone');
+    Route::get('laptop',[UserController::class,'laptop'])->name('user.laptop');
 });

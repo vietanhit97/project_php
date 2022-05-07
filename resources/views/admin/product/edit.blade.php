@@ -47,14 +47,14 @@
     </div>
     <div class="form-group">
         <label for="">Chọn ảnh mới</label>
-        <input type="file" class="form-control" name="upload" id="" placeholder="Ảnh sản phẩm ">
+        <input type="file" class="form-control" name="upload" value="{{$product->image}}" id="" placeholder="Ảnh sản phẩm ">
         @error('upload')
         <small class="help-block">{{$message}}</small>
         @enderror
     </div>
     <div class="form-group">
         <label for="">Mô tả</label>
-        <textarea name="description" id="content" class="form-control" rows="3" placeholder="Mô tả sản phẩm..."></textarea>
+        <textarea name="description" id="content" value="{{$product->description}}" class="form-control" rows="3" placeholder="Mô tả sản phẩm..."></textarea>
     </div>
     <div class="form-group">
         <label for="">Trạng Thái</label>

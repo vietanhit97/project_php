@@ -35,7 +35,7 @@
             <td>{{$pro -> sale_price}}</td>
             <td><img src="{{url('public/uploads')}}/{{$pro -> image}}" alt="" width="60px"></td>
             <td>
-            @if($pro->status == 0)
+            @if($pro->status == 1)
                 <span class="label label-danger"> Tạm ẩn</span>
                 @else
                 <span class="label label-success"> Hiển thị</span>
