@@ -19,12 +19,12 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/bootstrap.min.css">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/font-awesome.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/owl.carousel.css">
+    <link rel="stylesheet" href="{{url('public/usercss')}}/css/css.css">
     <link rel="stylesheet" href="{{url('public/usercss')}}/style.css">
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/responsive.css">
 
@@ -84,8 +84,9 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh Mục <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{route('user.phone')}}">Điện Thoại</a></li>
-                            <li><a href="{{route('user.laptop')}}">Lap Top</a></li>
+                            @foreach($categories as $cat )
+                            <li><a href="{{route('user.category',['category'=>$cat->id,'slug'=>Str::slug($cat->name)])}}">{{$cat ->name}}</a></li>
+                            @endforeach 
                         </ul>
                     </li>
                     <li><a href="{{route('user.shop')}}">Sản Phẩm</a></li>
@@ -236,8 +237,9 @@
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Danh Mục</h2>
                         <ul>
-                            <li><a href="#">Điện Thoại</a></li>
-                            <li><a href="#">Lap Top</a></li>
+                            @foreach($categories as $cat )
+                            <li><a href="#">{{$cat->name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

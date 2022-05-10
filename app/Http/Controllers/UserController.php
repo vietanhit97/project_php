@@ -15,12 +15,8 @@ class UserController extends Controller
        $product = Product::paginate(8);
        return view('user.shop',compact('product'));
    }
-   public function phone(){
-    $productPhone = Product::productPhone();
-    return view('user.phone',compact('productPhone'));
-    }
-    public function laptop(){
-        $productLaptop = Product::productLaptop();
-        return view('user.laptop',compact('productLaptop'));
-    }
+   public function category(Category $category){
+       $productOfCategory = $category->products()->paginate(4);
+       return view('user.category',compact('productOfCategory','category'));
+   }
 }

@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {   
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     protected $table = 'product';
     protected $fillable = ['name','status','category_id','price','sale_price','description','image'];
     public function cat(){
@@ -39,11 +39,5 @@ class Product extends Model
     }
     public function scopeProductCarousel($query , $limit = 8 ){
         return $query->orderBy('id','desc')->limit($limit)->get();
-    }
-    public function scopeProductPhone($query){
-        return $query->where('category_id','=','5')->get();
-    }
-    public function scopeProductLaptop($query){
-        return $query->where('category_id','=','6')->get();
     }
 }

@@ -1,9 +1,20 @@
 @extends('master.user')
-@section('title','Danh Muc -LapTop')
+@section('title',$category->name)
 @section('content')
-<div class="container">
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>{{$category->name}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt">
     <div class="row">
-        @foreach($productLaptop as $pro)
+        @foreach($productOfCategory as $pro)
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
             <div class="thumbnail">
                 <img src="{{url('public/uploads')}}/{{$pro->image}}" alt="">
@@ -24,6 +35,9 @@
             </div>
         </div>
         @endforeach
+    </div>
+    <div class="text-center">
+    {{$productOfCategory->appends(request()->all())->links()}}
     </div>
 </div>
 @stop
