@@ -19,4 +19,7 @@ class UserController extends Controller
        $productOfCategory = $category->products()->paginate(4);
        return view('user.category',compact('productOfCategory','category'));
    }
+   public function productSingle(Product $product){
+      return view('user.singleProduct',compact('product'));
+   }
 }

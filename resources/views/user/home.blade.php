@@ -16,7 +16,7 @@
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Giỏ
                                             Hàng </a>
-                                        <a href="single-product.html" class="view-details-link"><i
+                                        <a href="{{route('user.productSingle',['product'=>$pro->id,'slug'=>Str::slug($pro->name)])}}" class="view-details-link"><i
                                                 class="fa fa-link"></i> Chi Tiết </a>
                                     </div>
                                 </div>

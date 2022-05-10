@@ -41,4 +41,5 @@ Route::group(['prefix'=>'user'], function(){ //group truyền 2 tham sô : mản
     Route::get('',[UserController::class,'home'])->name('user');
     Route::get('shop',[UserController::class,'shop'])->name('user.shop');
     Route::get('/{category}-{slug}',[UserController::class,'category'])->name('user.category');
+    Route::get('san-pham/{product}-{slug}',[UserController::class,'productSingle'])->name('user.productSingle');
 });

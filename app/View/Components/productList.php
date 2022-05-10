@@ -11,9 +11,10 @@ class productList extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $data;
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -23,6 +24,7 @@ class productList extends Component
      */
     public function render()
     {
-        return view('components.product-list');
+        $data = $this->data;
+        return view('components.product-list',compact('data'));
     }
 }
