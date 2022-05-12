@@ -13,7 +13,6 @@ class Category extends Model
     protected $dates = ['deleted_at'];
     public function products(){
         return $this->hasMany(Product::class,'category_id','id'); // truy van 1 cat - n pro
-
     }
     public function scopeSearch($query) // scopeSearch viết bên controller bỏ scope viết thương search
     {

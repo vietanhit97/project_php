@@ -21,12 +21,12 @@
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/font-awesome.min.css">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/owl.carousel.css">
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/css.css">
     <link rel="stylesheet" href="{{url('public/usercss')}}/style.css">
     <link rel="stylesheet" href="{{url('public/usercss')}}/css/responsive.css">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,13 +41,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
+                    @if(auth()->guard('customer')->check())
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> Tài Khoản</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i>{{auth()->guard('customer')->user()->name}}</a>
+                            </li>
                             <li><a href="#"><i class="fa fa-heart"></i> Yêu Thích</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Đăng Nhập</a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
+                            <li><a href="#"><i class="fa fa-history"></i>Lịch sử mua hàng</a></li>
+                            <li><a href="{{route('user.logout')}}"><i class="fa fa-sign-out"></i>Đăng xuất</a></li>
                         </ul>
                     </div>
+                    @else
+                    <div class="user-menu">
+                        <ul>
+                            <li><a href="{{route('user.login')}}"><i class="fa fa-user"></i> Đăng Nhập</a></li>
+                            <li><a href=""><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
+                        </ul>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -55,6 +67,18 @@
 
     <div class="site-branding-area">
         <div class="container">
+            @if(Session::has('ok'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{Session::get('ok')}}
+            </div>
+            @endif
+            @if(Session::has('no'))
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{Session::get('no')}}
+            </div>
+            @endif
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
@@ -85,8 +109,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh Mục <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             @foreach($categories as $cat )
-                            <li><a href="{{route('user.category',['category'=>$cat->id,'slug'=>Str::slug($cat->name)])}}">{{$cat ->name}}</a></li>
-                            @endforeach 
+                            <li><a
+                                    href="{{route('user.category',['category'=>$cat->id,'slug'=>Str::slug($cat->name)])}}">{{$cat ->name}}</a>
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
                     <li><a href="{{route('user.shop')}}">Sản Phẩm</a></li>
@@ -101,85 +127,9 @@
         </nav>
     </div>
 
+    @yield('carousel')
 
-    <div class="slider-area">
-        <!-- Slider -->
-        <div class="block-slider block-slider4">
-            <ul class="" id="bxslider-home4">
-                <li>
-                    <img src="{{url('public/usercss')}}/img/h4-slide.png" alt="Slide">
-                    <div class="caption-group">
-                        <h2 class="caption title">
-                            iPhone <span class="primary">13 <strong>Pro Max</strong></span>
-                        </h2>
-                        <h4 class="caption subtitle">Mới</h4>
-                        <a class="caption button-radius" href="#"><span class="icon"></span>Chi Tiết</a>
-                    </div>
-                </li>
-                <li><img src="{{url('public/usercss')}}/img/h4-slide2.png" alt="Slide">
-                    <div class="caption-group">
-                        <h2 class="caption title">
-                            Giảm Giá <span class="primary">50% <strong></strong></span>
-                        </h2>
-                        <h4 class="caption subtitle">Back To School</h4>
-                        <a class="caption button-radius" href="#"><span class="icon"></span>Chi Tiết</a>
-                    </div>
-                </li>
-                <li><img src="{{url('public/usercss')}}/img/h4-slide3.png" alt="Slide">
-                    <div class="caption-group">
-                        <h2 class="caption title">
-                            Apple <span class="primary">Store <strong>Ipod</strong></span>
-                        </h2>
-                        <h4 class="caption subtitle">Máy Nghe Nhạc</h4>
-                        <a class="caption button-radius" href="#"><span class="icon"></span>Chi Tiết</a>
-                    </div>
-                </li>
-                <li><img src="{{url('public/usercss')}}/img/h4-slide4.png" alt="Slide">
-                    <div class="caption-group">
-                        <h2 class="caption title">
-                            Apple <span class="primary">Store <strong>Ipod</strong></span>
-                        </h2>
-                        <h4 class="caption subtitle">& Phone</h4>
-                        <a class="caption button-radius" href="#"><span class="icon"></span>Chi Tiết</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!-- ./Slider -->
-    </div> <!-- End slider area -->
-
-    <div class="promo-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo1">
-                        <i class="fa fa-refresh"></i>
-                        <p>30 Ngày Trở lại</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo2">
-                        <i class="fa fa-truck"></i>
-                        <p>Miễn Phí Giao Hàng</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo3">
-                        <i class="fa fa-lock"></i>
-                        <p>Thanh Toán Nhanh </p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-promo promo4">
-                        <i class="fa fa-gift"></i>
-                        <p>Sản Phẩm Mới</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End promo area -->
-  @yield('content')
+    @yield('content')
     <div class="brands-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -266,7 +216,8 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                        <p>&copy; © 2020. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI HOÀNG HÀ <a href="https://www.facebook.com/vietanhabc/"
+                        <p>&copy; © 2020. CÔNG TY CỔ PHẦN XÂY DỰNG VÀ ĐẦU TƯ THƯƠNG MẠI HOÀNG HÀ <a
+                                href="https://www.facebook.com/vietanhabc/"
                                 target="_blank">https://www.facebook.com/vietanhabc</a></p>
                     </div>
                 </div>

@@ -19,6 +19,16 @@ use App\Http\Controllers\ProductController;
  Route::get('admin/login',[AdminController::class,'login'])->name('admin.login'); // hiển thị
  Route::post('admin/login',[AdminController::class,'check_login']); // gửi dữ liệu form check
  Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout'); // thoát
+ 
+ Route::get('registration',[UserController::class,'registration'])->name('user.registration'); // hiển thị
+ Route::post('registration',[UserController::class,'createRegistration']);
+ Route::get('login',[UserController::class,'login'])->name('user.login'); // hiển thị
+ Route::post('login',[UserController::class,'check_login']);
+ Route::get('logout',[UserController::class,'logout'])->name('user.logout'); // thoát
+
+
+
+
  Route::group(['prefix'=>'admin','middleware' => 'auth'], function(){ //group truyền 2 tham sô : mảng và function ,'middleware' => 'auth' đăng nhâoj
     Route::get('',[AdminController::class,'dashboard'])->name('admin');
     Route::resources([  // cmd : php artisan route:list 
