@@ -10,8 +10,7 @@ use App\Http\Requests\Customer\CustomerRequestLogin as reqCusLogin;
 class UserController extends Controller
 {
    public function home(){
-       $proCarousel = Product::productCarousel();
-       return view('user.home',compact('proCarousel'));
+       return view('user.home');
    }
    public function shop(){
        $product = Product::paginate(8);
@@ -40,8 +39,8 @@ class UserController extends Controller
     public function login(){
         return view('customer.login');
     }
-    public function check_login(reqCusLogin $reqLogin,Request $req){
-        $data=$req->only('email','password');
+    public function check_login(reqCusLogin $reqLogin){
+        $data=$reqLogin->only('email','password');
         // $password = bcrypt('123456') ; dd($password); // lấy mã hóa mất khẩu 
         $check = auth()->guard('customer')->attempt($data); // xác thực người dùng thủ công 
         if ($check) {

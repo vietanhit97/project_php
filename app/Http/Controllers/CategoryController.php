@@ -49,8 +49,6 @@ class CategoryController extends Controller
         $category->restore();
        return redirect()->route('category.index')->with('ok','Khôi phục thành công ');
     }
-
-    
     public function forceDelete($id){
         $category = Category::withTrashed()->find($id);
         $category->forceDelete();

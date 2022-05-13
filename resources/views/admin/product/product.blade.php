@@ -53,6 +53,11 @@
         </tr>
         @endforeach
     </tbody>
+    
 </table>
 {{$pros->appends(request()->all())->links()}}
+<div class="text-right">
+    <a href="{{route('product.trashed')}}" class="btn btn-default "><i class="fa fa-trash" aria-hidden="true"></i>Thùng
+        Rác</a>
+</div>
 @stop

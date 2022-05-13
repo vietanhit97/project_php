@@ -37,4 +37,18 @@ class ProductController extends Controller
     public function show(Product $product) {
         return view('admin.product.show',compact('product'));
     }
+    public function trashed(){
+        $pros = Product::search()->onlyTrashed()->paginate();
+        return view('admin.product.trashed',compact('pros'));
+    }
+    public function restore($id){
+        $pros = Product::withTrashed()->find($id);
+        $pros->restore();
+       return redirect()->route('product.index')->with('ok','Khôi phục thành công ');
+    }
+    public function forceDelete($id){
+        $pros = Product::withTrashed()->find($id);
+        $pros->forceDelete();
+        return redirect()->route('product.trashed')->with('ok','Xóa vĩnh viễn thành công ');
+    }
 }

@@ -41,7 +41,7 @@ use App\Http\Controllers\ProductController;
         Route::delete('force-delete/{category}',[CategoryController::class,'forceDelete'])->name('category.forceDelete');
     });
     Route::group(['prefix'=>'product'], function(){
-        Route::get('trashed',[ProductController::class,'trashed'])->name('product.trashed');
+        Route::get('delete/trashed',[ProductController::class,'trashed'])->name('product.trashed');
         Route::get('show-product/{product}',[ProductController::class,'show'])->name('product.show');
         Route::get('restore/{product}',[ProductController::class,'restore'])->name('product.restore');
         Route::delete('force-delete/{product}',[ProductController::class,'restore'])->name('product.forceDelete');
