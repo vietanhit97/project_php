@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminController;//lấy bên namespace HomeController
 use App\Http\Controllers\UserController;//lấy bên namespace HomeController
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +55,12 @@ Route::group(['prefix'=>'user'], function(){ //group truyền 2 tham sô : mản
     Route::get('/{category}-{slug}',[UserController::class,'category'])->name('user.category');
     Route::get('san-pham/{product}-{slug}',[UserController::class,'productSingle'])->name('user.productSingle');
 });
+
+Route::group(['prefix' => 'cart'], function() {
+    Route::get('/add/{id}', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('/delete/{id}', [CartController::class, 'delete'])->name('cart.delete');
+    Route::get('/clear', [CartController::class, 'clear'])->name('cart.clear');
+    Route::get('/view', [CartController::class, 'view'])->name('cart.view');
+
+}); 

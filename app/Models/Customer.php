@@ -27,6 +27,10 @@ class Customer extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function scopeCreateRegisTration(){
+        $data = request() -> only('name','email','password','phone','address');
+        $data['password'] = bcrypt(request()->password);
+        return $this->create($data);
+    }
 
-  
 }

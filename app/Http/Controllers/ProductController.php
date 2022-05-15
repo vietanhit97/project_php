@@ -38,7 +38,7 @@ class ProductController extends Controller
         return view('admin.product.show',compact('product'));
     }
     public function trashed(){
-        $pros = Product::search()->onlyTrashed()->paginate();
+        $pros = Product::search()->onlyTrashed()->paginate(4);
         return view('admin.product.trashed',compact('pros'));
     }
     public function restore($id){

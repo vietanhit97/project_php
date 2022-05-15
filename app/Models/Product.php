@@ -37,5 +37,5 @@ class Product extends Model
         $data['image'] = $file_name; // phải để dưới $req->only('name','price','sale_price','category_id','description','image');
         return $this->update($data);
     }
-
+ 
 }

@@ -47,7 +47,7 @@
                             <li><a href="#"><i class="fa fa-user"></i>{{auth()->guard('customer')->user()->name}}</a>
                             </li>
                             <li><a href="#"><i class="fa fa-heart"></i> Yêu Thích</a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
+                            <li><a href="{{route('cart.view')}}"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
                             <li><a href="#"><i class="fa fa-history"></i>Lịch sử mua hàng</a></li>
                             <li><a href="{{route('user.logout')}}"><i class="fa fa-sign-out"></i>Đăng xuất</a></li>
                         </ul>
@@ -56,7 +56,7 @@
                     <div class="user-menu">
                         <ul>
                             <li><a href="{{route('user.login')}}"><i class="fa fa-user"></i> Đăng Nhập</a></li>
-                            <li><a href=""><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
+                            <li><a href="{{route('cart.view')}}"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a></li>
                         </ul>
                     </div>
                     @endif

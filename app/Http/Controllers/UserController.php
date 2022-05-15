@@ -27,13 +27,11 @@ class UserController extends Controller
     return view('customer.registration');
     }
     public function createRegistration(reqCus $req){
-       $data = $req -> only('name','email','password','phone','address');
-       $data['password'] = bcrypt($req->password);
-       if (Customer::create($data)) {
-        return redirect()->route('user');
+       if (Customer::createRegisTration()) {
+        return redirect()->route('user')->with('ok','Đăng ký tài khoản thành công !');
         }
         else {
-        return redirect()->back();
+        return redirect()->back()->with('no','Đăng ký tài khoản thất bại ! ');
         }
     }
     public function login(){
